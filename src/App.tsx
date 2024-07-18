@@ -22,8 +22,10 @@ const App: React.FC = () => {
   function  confirmOrder() {
     setToggleConfirmOrder(true)
   }
+
   function startNewOrder() {
     setToggleConfirmOrder(false)
+    setShowIncrement({}); // Hide the increment button
     setCart([])
   }
   
