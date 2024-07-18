@@ -15,10 +15,16 @@ const App: React.FC = () => {
   const [showIncrement, setShowIncrement] = useState<{ [key: string]: boolean }>({});
   const [toggleConfirmOrder, setToggleConfirmOrder] = useState<boolean>(false);
 
+  
+
   const totalPrice = cart.reduce((acc, item) => acc + (item.quantity || 1) * item.price, 0).toFixed(2)
 
   function  confirmOrder() {
     setToggleConfirmOrder(true)
+  }
+  function startNewOrder() {
+    setToggleConfirmOrder(false)
+    setCart([])
   }
   
   // Function to add an item to the cart
@@ -117,6 +123,7 @@ const App: React.FC = () => {
                 </p>
               </div>
               <button 
+                onClick={startNewOrder}
                 type='button'
                 className='bg-Red w-full text-lg font-semibold text-Rose100 py-3 
                 rounded-full mt-6'
