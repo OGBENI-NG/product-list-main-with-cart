@@ -104,7 +104,7 @@ const App: React.FC = () => {
                 bg-Rose50 rounded-t-xl absolute 
                 bottom-28 right-0 left-0 top-[100px] h-screen px-5`}>
                 <div className=''>
-                  <div className='py-4'>
+                  <div className='pt-6 pb-4'>
                     <img 
                       src={confirmIcon} 
                       alt="order-complete-icon"
@@ -117,7 +117,7 @@ const App: React.FC = () => {
                 <div className='pb-10 pt-4 overflow-x-scroll'>
                   <div className='flex flex-col ssm:h-[298px] sm:h-[300px] overflow-x-hidden '>
                     <div className='bg-Rose100 ssm:px-4 ssm:pt-1 sm:pt-0
-                      ssm:pb-4 sm:px-4
+                      ssm:pb-4 sm:px-3
                       pt-2 pb-4 px-5 rounded-lg 
                       sm:h-[calc-size(auto)] ssm:h-[calc-size(auto)] mt-auto'>
                       {cart.map(item => (
@@ -138,7 +138,7 @@ const App: React.FC = () => {
                     <button 
                       onClick={startNewOrder}
                       type='button'
-                      className='bg-Red w-full text-lg font-semibold text-Rose100 py-3 
+                      className='bg-Red w-full text-lg font-semibold text-Rose100 py-2 
                       rounded-full'
                     >
                       Start New Order
