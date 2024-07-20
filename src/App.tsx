@@ -31,6 +31,7 @@ const App: React.FC = () => {
     setToggleConfirmOrder(true)
   }
 
+  
   //start new order function
   function startNewOrder() {
     setCloseLoading(true)
@@ -91,8 +92,8 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="px-4 bg-Rose100 w-full h-screen font-RedHat 
-      pb-[70px] overflow-x-hidden select-none">
+    <div className={`px-4 bg-Rose100 w-full h-screen font-RedHat 
+      pb-[70px] overflow-x-hidden select-none`}>
       
       {/* Header for the desserts section */}
       <header className='fixed bg-Rose100 top-0 left-0 right-0 z-[1] px-4'>
@@ -159,7 +160,7 @@ const App: React.FC = () => {
         </div>
         <div className={`
           ${toggleConfirmOrder ? 'block' : 'hidden'} absolute inset-0 
-          h-screen overflow-hidden bg-Rose900/40 z-50`}>
+          h-screen overflow-hidden bg-Rose900/50 z-50`}>
           {/* order confirm component */}
           <div className=''>
             {isLoading || closeLoading ? (
