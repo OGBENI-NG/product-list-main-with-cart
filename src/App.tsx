@@ -100,7 +100,7 @@ const App: React.FC = () => {
                 <LoadingComponent/>
               </div>
               ) : (
-              <div className={`${toggleConfirmOrder && 'animate-slideUp'}
+              <div className={`${toggleConfirmOrder && 'animate-slideUp overflow-x-hidden'}
                 bg-Rose50 rounded-t-xl absolute 
                 bottom-28 right-0 left-0 top-[100px] h-full px-5`}>
                 <div className=''>
@@ -117,7 +117,7 @@ const App: React.FC = () => {
                 <div className='pb-10 pt-4'>
                   <div className='flex flex-col ssm:h-[298px] sm:h-[290px] overflow-x-hidden '>
                     <div className='bg-Rose100 ssm:px-4 ssm:pt-1 sm:pt-0
-                      ssm:pb-4 sm:px-3
+                      ssm:pb-4 sm:px-4
                       pt-2 pb-4 px-5 rounded-lg 
                       sm:h-[calc-size(auto)] ssm:h-[calc-size(auto)] mt-auto'>
                       {cart.map(item => (

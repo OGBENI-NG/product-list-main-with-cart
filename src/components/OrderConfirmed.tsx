@@ -13,7 +13,7 @@ const OrderConfirmed: React.FC<props> = ({item, cart}) => {
   const flexDiv: string = 'flex'
   
   return (
-    <div className='border-b-[1.5px] border-Rose300/50 py-3'>
+    <div className='border-b-[1.5px] border-Rose300/50 py-4'>
       <div className={`${flexDiv} items-center`}>
         <img 
           src={item.image.thumbnail} 
