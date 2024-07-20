@@ -111,7 +111,7 @@ const App: React.FC = () => {
                       className='size-auto'
                     />
                   </div>
-                  <h2 className='text-2xl w-[200px] leading-tight font-bold'>Order Confirmed</h2>
+                  <h2 className='text-3xl w-[200px] leading-tight font-bold'>Order Confirmed</h2>
                   <p className='text-base ssm:pt-3 ssm:pb-2 pt-3 pb-0 text-Rose500'>We hope you enjoy your food!</p>
                 </div>
                 <div className='pb-10 pt-4 overflow-x-scroll'>
