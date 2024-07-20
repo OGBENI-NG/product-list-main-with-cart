@@ -115,7 +115,7 @@ const App: React.FC = () => {
                   <p className='text-base ssm:pt-3 ssm:pb-2 pt-3 pb-0 text-Rose500'>We hope you enjoy your food!</p>
                 </div>
                 <div className='pb-10 pt-4 overflow-x-scroll'>
-                  <div className='flex flex-col ssm:h-[298px] sm:h-[260px] overflow-x-hidden '>
+                  <div className='flex flex-col ssm:h-[298px] sm:h-[300px] overflow-x-hidden '>
                     <div className='bg-Rose100 ssm:px-4 ssm:pt-1 sm:pt-0
                       ssm:pb-4 sm:px-4
                       pt-2 pb-4 px-5 rounded-lg 
