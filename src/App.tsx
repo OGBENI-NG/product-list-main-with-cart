@@ -112,7 +112,7 @@ const App: React.FC = () => {
                   <h2 className='ssm:text-3xl sm:text-4xl w-[200px] leading-tight font-bold'>Order Confirmed</h2>
                   <p className='text-base ssm:pt-3 ssm:pb-5 pt-3 pb-5 text-Rose500'>We hope you enjoy your food!</p>
                 </div>
-                <div className='flex flex-col ssm:h-[405px] sm:h-[460px]'>
+                <div className='flex flex-col ssm:h-[405px] sm:h-[500px]'>
                   <div className='bg-Rose100 ssm:px-4 ssm:pt-1 ssm:pb-4
                     pt-2 pb-5 px-5 rounded-lg overflow-x-hidden 
                     ssm:mb-6 sm:mb-5  sm:h-[calc-size(auto)] ssm:h-[calc-size(auto)]'>
