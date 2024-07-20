@@ -4,11 +4,11 @@ import { DessertItem  } from '../data'
 
 interface props {
   item: DessertItem
-  cart: DessertItem[]
-  // handleToggle: () => void
+ 
+  
 }
 
-const OrderConfirmed: React.FC<props> = ({item, cart}) => {
+const OrderConfirmed: React.FC<props> = ({item}) => {
 
   const flexDiv: string = 'flex'
   
