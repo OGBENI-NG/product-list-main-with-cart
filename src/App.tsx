@@ -36,10 +36,10 @@ const App: React.FC = () => {
     setCloseLoading(true)
     setTimeout(() => {
       setCloseLoading(false)
-      setShowIncrement({})
       setToggleConfirmOrder(false)
       setCart([])
     }, 2000)
+    setShowIncrement({})
   }
 
   // Function to add an item to the cart
