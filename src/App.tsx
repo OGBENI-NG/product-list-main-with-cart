@@ -102,7 +102,7 @@ const App: React.FC = () => {
               ) : (
               <div className={`${toggleConfirmOrder && 'animate-slideUp'}
                 bg-Rose50 rounded-t-xl absolute 
-                bottom-28 right-0 left-0 top-[100px] h-screen px-5`}>
+                bottom-28 right-0 left-0 top-[100px] h-full px-5`}>
                 <div className=''>
                   <div className='pt-6 pb-4'>
                     <img 
@@ -114,7 +114,7 @@ const App: React.FC = () => {
                   <h2 className='text-3xl w-[200px] leading-tight font-bold'>Order Confirmed</h2>
                   <p className='text-base ssm:pt-3 ssm:pb-2 pt-2 pb-0 text-Rose500'>We hope you enjoy your food!</p>
                 </div>
-                <div className='pb-10 pt-4 overflow-x-scroll'>
+                <div className='pb-10 pt-4'>
                   <div className='flex flex-col ssm:h-[298px] sm:h-[290px] overflow-x-hidden '>
                     <div className='bg-Rose100 ssm:px-4 ssm:pt-1 sm:pt-0
                       ssm:pb-4 sm:px-3
@@ -134,7 +134,7 @@ const App: React.FC = () => {
                       </p>
                     </div>
                   </div>
-                  <div className='pt-6'>
+                  <div className='pt-5'>
                     <button 
                       onClick={startNewOrder}
                       type='button'
