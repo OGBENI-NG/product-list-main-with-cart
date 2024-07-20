@@ -102,7 +102,7 @@ const App: React.FC = () => {
               ) : (
               <div className={`${toggleConfirmOrder && 'animate-slideUp'}
                 bg-Rose50 rounded-t-xl absolute 
-                bottom-0 right-0 left-0 top-[100px] px-5 pb-[100px]`}>
+                bottom-0 right-0 left-0 top-[100px] px-5 pb-10`}>
                 <div>
                   <img 
                     src={confirmIcon} 
