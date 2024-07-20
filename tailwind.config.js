@@ -9,6 +9,11 @@ export default {
       fontFamily: {
         RedHat: ["Red Hat Text", "sans-serif"]
       },
+      screens: {
+        ssm: {'min': '360px', 'max': '377px'},
+        sm: {'min': '390px', 'max': '640px'}
+        
+      },
       colors: {
         Red: 'hsl(14, 86%, 42%)',
         Green: 'hsl(159, 69%, 38%)',
@@ -20,14 +25,14 @@ export default {
         Rose900: 'hsl(14, 65%, 9%)'
       },
       animation: {
-        upAnim: "upAnim .5s ease 0s 1 normal forwards",
+        upAnim: "upAnim .3s ease 0s 1 normal forwards",
         slideUp: "slideUp .5s ease 0s 1 normal forwards"
       },
       keyframes: {
         upAnim: {
           '0%': {
             opacity: 0,
-            transform: "scale(0.5)"
+            transform: "scale(0.9)"
             
           },
           '100%': {

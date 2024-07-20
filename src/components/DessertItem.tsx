@@ -26,7 +26,7 @@ const DessertItemComponent: React.FC<Props> = ({
     <div>
       <div className="flex flex-col items-center">
         {/* Dessert Image */}
-        <div className={`${showIncrement[item.id] && 'border-[3px] border-Red'} rounded-[10px] w-full overflow-hidden transition-colors duration-500`}>
+        <div className={`${showIncrement[item.id] && 'border-[3px] border-Red'} rounded-[10px] w-full overflow-hidden transition-colors duration-300`}>
           {/* Image of the dessert with responsive sources */}
           <img
             src={item.image.mobile}

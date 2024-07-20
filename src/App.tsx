@@ -6,6 +6,7 @@ import confirmIcon from './assets/images/icon-order-confirmed.svg'
 import DessertItemComponent from './components/DessertItem'; // Importing the DessertItemComponent
 import CartItemComponent from './components/CartItem'; // Importing the CartItemComponent
 import OrderConfirmed from './components/OrderConfirmed';
+import LoadingComponent from './components/Loading';
 
 // Define the main App component
 const App: React.FC = () => {
@@ -14,19 +15,24 @@ const App: React.FC = () => {
   // State to manage which items should show the increment buttons
   const [showIncrement, setShowIncrement] = useState<{ [key: string]: boolean }>({});
   const [toggleConfirmOrder, setToggleConfirmOrder] = useState<boolean>(false);
-
-  
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const totalPrice = cart.reduce((acc, item) => acc + (item.quantity || 1) * item.price, 0).toFixed(2)
 
+  //confirm order function
   function  confirmOrder() {
+    setIsLoading(true)
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 2000)
     setToggleConfirmOrder(true)
   }
 
+  //start new order function
   function startNewOrder() {
-    setToggleConfirmOrder(false)
-    setShowIncrement({}); // Hide the increment button
     setCart([])
+    setShowIncrement({})
+    setToggleConfirmOrder(false)
   }
   
   // Function to add an item to the cart
@@ -78,12 +84,67 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="px-4 bg-Rose100 w-full h-screen font-RedHat pb-[100px] 
-      overflow-x-hidden  select-none">
+    <div className="px-4 bg-Rose100 w-full h-screen font-RedHat 
+      pb-[100px] overflow-x-hidden select-none">
+      
       {/* Header for the desserts section */}
       <header>
         <h1 className="font-bold text-5xl py-8 text-Rose900">Desserts</h1>
       </header>
+      {toggleConfirmOrder ? (
+        <div className='absolute inset-0 h-screen overflow-hidden bg-Rose900/40'>
+          {/* order confirm component */}
+          <div className=''>
+            {isLoading ? (
+              <div className='flex items-center justify-center h-screen'>
+                <LoadingComponent/>
+              </div>
+              ) : (
+              <div className={`${toggleConfirmOrder && 'animate-slideUp'}
+                bg-Rose50 rounded-t-xl absolute 
+                bottom-0 right-0 left-0 top-[110px] px-5 pb-10`}>
+                <div>
+                  <img 
+                    src={confirmIcon} 
+                    alt="order-complete-icon"
+                    className='pt-7 pb-3'
+                  />
+                  <h2 className='ssm:text-3xl sm:text-4xl w-[200px] leading-tight font-bold'>Order Confirmed</h2>
+                  <p className='text-base ssm:pt-3 ssm:pb-5 pt-3 pb-5 text-Rose500'>We hope you enjoy your food!</p>
+                </div>
+                <div className='flex flex-col ssm:h-[405px] sm:h-[460px]'>
+                  <div className='bg-Rose100 ssm:px-4 ssm:pt-1 ssm:pb-4
+                    pt-2 pb-5 px-5 rounded-lg overflow-x-hidden 
+                    ssm:mb-6 sm:mb-5  sm:h-[calc-size(auto)] ssm:h-[calc-size(auto)]'>
+                    {cart.map(item => (
+                      <OrderConfirmed 
+                        key={item.id}
+                        item={item}
+                        cart={cart}
+                      />
+                    ))}
+                    <p className='flex items-center font-semibold pt-5 pb-0 text-Rose900'>Order Total 
+                      <span className='ml-auto text-2xl font-bold'>
+                        ${totalPrice}
+                      </span>
+                    </p>
+                  </div>
+                  <button 
+                    onClick={startNewOrder}
+                    type='button'
+                    className='bg-Red w-full text-lg font-semibold text-Rose100 py-3 
+                    rounded-full sm:mb-8 sm:mt-1'
+                  >
+                    Start New Order
+                  </button>
+                </div>
+              </div>
+            )}
+            
+          </div>
+        </div>    
+      ):(
+      <>
         <div>
           {/* Map through the dessert data and render each item using the DessertItemComponent */}
           {dessertData.map(item => (
@@ -97,41 +158,6 @@ const App: React.FC = () => {
               removeFromCart={removeItemFromUpdateCart}
             />
           ))}
-          <div className={`${toggleConfirmOrder ? 'block':'hidden'} z-[999] absolute inset-0 h-screen overflow-hidden bg-Rose900/40`}>
-            {/* order confirm component */}
-            <div className={`${toggleConfirmOrder && 'animate-slideUp'} bg-Rose50 rounded-t-xl absolute 
-              bottom-0 right-0 left-0 top-auto px-5 pb-10`}>
-              <div>
-                <img 
-                  src={confirmIcon} 
-                  alt="order-complete-icon"
-                  className='pt-7'
-                />
-                <h2 className='text-4xl w-[200px] leading-tight font-bold'>Order Confirmed</h2>
-                <p className='text-base pt-4 pb-9 text-Rose500'>We hope you enjoy your food!</p>
-              </div>
-              <div className='bg-Rose100 pt-3 pb-5 px-5 rounded-lg'>
-                {cart.map(item => (
-                  <OrderConfirmed 
-                    key={item.id}
-                    item={item}
-                    cart={cart}
-                  />
-                ))}
-                <p className='flex items-center pt-4 text-Rose900'>Order Total 
-                  <span className='ml-auto text-2xl font-bold'>
-                    ${totalPrice}
-                  </span>
-                </p>
-              </div>
-              <button 
-                onClick={startNewOrder}
-                type='button'
-                className='bg-Red w-full text-lg font-semibold text-Rose100 py-3 
-                rounded-full mt-6'
-              >Start New Order</button>
-            </div>
-          </div>    
         </div>
         <div className="bg-Rose50 p-6 rounded-lg ">
           <div className="flex flex-col">
@@ -146,33 +172,34 @@ const App: React.FC = () => {
                 <p className="text-center font-medium text-Rose500">Your added items will appear here</p>
               </div>
             ) : (
-            <div className="pt-3">
-              {/* Map through the cart items and render each item using the CartItemComponent */}
-              {cart.map((item, index) => (
-                <CartItemComponent
-                  key={index}
-                  item={item}
-                  removeItemFromCart={removeItemFromCart}
-                />
-              ))}
-              <p className='flex items-center pt-5 tex-base text-Rose900'>Order Total 
-                {/* Calculate and display the total order amount */}
-                <span className='ml-auto text-2xl font-bold'>${totalPrice}</span>
-              </p>
-              <div className='flex items-center gap-2 w-max px-4 mt-6 bg-Rose100 py-3 rounded-md'>
-                {/* Display carbon-neutral delivery information */}
-                <img src={carbonIcon} alt="carbon-icon" className='size-6' />
-                <p>This is <span className='font-bold'>carbon-neutral</span> delivery</p>
+              <div className="pt-3">
+                {/* Map through the cart items and render each item using the CartItemComponent */}
+                {cart.map((item, index) => (
+                  <CartItemComponent
+                    key={index}
+                    item={item}
+                    removeItemFromCart={removeItemFromCart}
+                  />
+                ))}
+                <p className='flex items-center pt-5 tex-base text-Rose900'>Order Total 
+                  {/* Calculate and display the total order amount */}
+                  <span className='ml-auto text-2xl font-bold'>${totalPrice}</span>
+                </p>
+                <div className='flex items-center gap-2 w-full px-4 mt-6 bg-Rose100 py-3 rounded-md'>
+                  {/* Display carbon-neutral delivery information */}
+                  <img src={carbonIcon} alt="carbon-icon" className='size-6' />
+                  <p>This is <span className='font-bold'>carbon-neutral</span> delivery</p>
+                </div>
+                <button 
+                  onClick={confirmOrder}
+                  type='submit'
+                  className='w-full bg-Red mt-6 py-3 rounded-full font-semibold text-Rose100'
+                >Confirm Order</button>
               </div>
-              <button 
-                onClick={confirmOrder}
-                type='submit'
-                className='w-full bg-Red mt-6 py-3 rounded-full font-semibold text-Rose100'
-              >Confirm Order</button>
-            </div>
-          )}
+            )}
           </div>
         </div>
+      </>)}
     </div>
   );
 };
