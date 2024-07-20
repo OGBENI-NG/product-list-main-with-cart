@@ -102,7 +102,7 @@ const App: React.FC = () => {
               ) : (
               <div className={`${toggleConfirmOrder && 'animate-slideUp'}
                 bg-Rose50 rounded-t-xl absolute 
-                bottom-0 right-0 left-0 top-[100px] px-5 pb-10`}>
+                bottom-0 right-0 left-0 top-[100px] h-screen px-5 pb-16`}>
                 <div>
                   <img 
                     src={confirmIcon} 
@@ -110,12 +110,12 @@ const App: React.FC = () => {
                     className='pt-7 pb-3'
                   />
                   <h2 className='ssm:text-3xl sm:text-4xl w-[200px] leading-tight font-bold'>Order Confirmed</h2>
-                  <p className='text-base ssm:pt-3 ssm:pb-5 pt-3 pb-5 text-Rose500'>We hope you enjoy your food!</p>
+                  <p className='text-base ssm:pt-3 ssm:pb-5 pt-3 pb-0 text-Rose500'>We hope you enjoy your food!</p>
                 </div>
-                <div className='flex flex-col ssm:h-[405px] sm:h-[500px]'>
+                <div className='flex flex-col ssm:h-[400px] sm:h-[450px]'>
                   <div className='bg-Rose100 ssm:px-4 ssm:pt-1 ssm:pb-4
                     pt-2 pb-5 px-5 rounded-lg overflow-x-hidden 
-                    ssm:mb-6 sm:mb-5  sm:h-[calc-size(auto)] ssm:h-[calc-size(auto)]'>
+                    sm:h-[calc-size(auto)] ssm:h-[calc-size(auto)] mt-auto'>
                     {cart.map(item => (
                       <OrderConfirmed 
                         key={item.id}
@@ -123,20 +123,22 @@ const App: React.FC = () => {
                         cart={cart}
                       />
                     ))}
-                    <p className='flex items-center font-semibold pt-5 pb-0 text-Rose900'>Order Total 
+                    <p className='flex items-center font-semibold pt-5 text-Rose900'>Order Total 
                       <span className='ml-auto text-2xl font-bold'>
                         ${totalPrice}
                       </span>
                     </p>
                   </div>
-                  <button 
-                    onClick={startNewOrder}
-                    type='button'
-                    className='bg-Red w-full text-lg font-semibold text-Rose100 py-3 
-                    rounded-full sm:mb-8 sm:mt-1'
-                  >
-                    Start New Order
-                  </button>
+                  <div className='pt-8'>
+                    <button 
+                      onClick={startNewOrder}
+                      type='button'
+                      className='bg-Red w-full text-lg font-semibold text-Rose100 py-3 
+                      rounded-full'
+                    >
+                      Start New Order
+                    </button>
+                  </div>
                 </div>
               </div>
             )}
