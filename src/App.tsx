@@ -110,26 +110,29 @@ const App: React.FC = () => {
                     className='pt-7 pb-3'
                   />
                   <h2 className='ssm:text-3xl sm:text-4xl w-[200px] leading-tight font-bold'>Order Confirmed</h2>
-                  <p className='text-base ssm:pt-3 ssm:pb-5 pt-3 pb-0 text-Rose500'>We hope you enjoy your food!</p>
+                  <p className='text-base ssm:pt-3 ssm:pb-2 pt-3 pb-0 text-Rose500'>We hope you enjoy your food!</p>
                 </div>
-                <div className='flex flex-col ssm:h-[400px] sm:h-[450px]'>
-                  <div className='bg-Rose100 ssm:px-4 ssm:pt-1 ssm:pb-4
-                    pt-2 pb-5 px-5 rounded-lg overflow-x-hidden 
-                    sm:h-[calc-size(auto)] ssm:h-[calc-size(auto)] mt-auto'>
-                    {cart.map(item => (
-                      <OrderConfirmed 
-                        key={item.id}
-                        item={item}
-                        cart={cart}
-                      />
-                    ))}
-                    <p className='flex items-center font-semibold pt-5 text-Rose900'>Order Total 
-                      <span className='ml-auto text-2xl font-bold'>
-                        ${totalPrice}
-                      </span>
-                    </p>
+                <div className='pb-10 pt-4'>
+                  <div className='flex flex-col ssm:h-[298px] sm:h-[322px]'>
+                    <div className='bg-Rose100 ssm:px-4 ssm:pt-1 sm:pt-0
+                      ssm:pb-4 sm:px-4
+                      pt-2 pb-4 px-5 rounded-lg overflow-x-hidden 
+                      sm:h-[calc-size(auto)] ssm:h-[calc-size(auto)] mt-auto'>
+                      {cart.map(item => (
+                        <OrderConfirmed 
+                          key={item.id}
+                          item={item}
+                          cart={cart}
+                        />
+                      ))}
+                      <p className='flex items-center font-semibold pt-5 text-Rose900'>Order Total 
+                        <span className='ml-auto text-2xl font-bold'>
+                          ${totalPrice}
+                        </span>
+                      </p>
+                    </div>
                   </div>
-                  <div className='pt-8'>
+                  <div className='pt-6'>
                     <button 
                       onClick={startNewOrder}
                       type='button'
