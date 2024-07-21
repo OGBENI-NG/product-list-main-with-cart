@@ -72,7 +72,7 @@ const DessertItemComponent: React.FC<Props> = ({
         </div>
       </div>
       {/* Item details */}
-      <div className="flex flex-col gap-1 pt-5 pb-8 text-base">
+      <div className="flex flex-col gap-1 pt-3 pb-10 text-base">
         <p className="text-Rose500">{item.category}</p> {/* Category of the dessert */}
         <p className="text-Rose900 font-semibold">{item.name}</p> {/* Name of the dessert */}
         <p className="text-Red font-bold">${item.price.toFixed(2)}</p> {/* Price of the dessert */}

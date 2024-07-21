@@ -13,7 +13,7 @@ const CartItemComponent: React.FC<Props> = ({ item, removeItemFromCart }) => {
   return (
     // Main container for the cart item with border and padding
     <div className="border-b-2 border-Rose100 py-4 flex items-center">
-      <div className='text-base'>
+      <div className='text-base md:text-lg'>
         {/* Display the dessert name in bold */}
         <p className="text-Rose900 font-semibold">{item.name}</p>
         {/* Container for item quantity, individual price, and total price */}

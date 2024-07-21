@@ -7,6 +7,7 @@ import DessertItemComponent from './components/DessertItem'; // Importing the De
 import CartItemComponent from './components/CartItem'; // Importing the CartItemComponent
 import OrderConfirmed from './components/OrderConfirmed';
 import LoadingComponent from './components/Loading';
+import { PiShoppingCart} from "react-icons/pi";
 
 // Define the main App component
 const App: React.FC = () => {
@@ -92,12 +93,24 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className={`px-4 m:px-6 bg-Rose100 w-full h-screen font-RedHat 
+    <div className={`px-4 md:px-6 bg-Rose100 w-full h-screen font-RedHat 
       pb-[70px] overflow-x-hidden select-none`}>
       
       {/* Header for the desserts section */}
-      <header className='fixed bg-Rose100 top-0 left-0 right-0 z-[1] px-4 md:px-6 h-[105px]'>
-        <h1 className="font-bold text-5xl pt-7 text-Rose900">Desserts</h1>
+      <header className='fixed bg-Rose100 top-0 left-0 right-0 z-[1] px-4 md:px-6
+      flex items-center justify-between py-6' >
+        <h1 className="font-bold text-5xl text-Rose900">Desserts</h1>
+        <div className='relative'>
+          <PiShoppingCart className='text-[40px] '/>
+          {cart.length > 0 ? 
+            <div className={`${toggleConfirmOrder && 'hidden'} flex absolute h-4 w-7 -top-[3px] left-[15px] 
+              leading-none bg-Red rounded-full`}>
+            <span className=' text-Rose50 p-[2px] m-auto font-semibold 
+              text-[12px] leading-none'>
+              {totalCartItem}
+            </span>
+          </div> : ''}
+        </div>
       </header>
       
       <>      
@@ -115,7 +128,7 @@ const App: React.FC = () => {
             />
           ))}
         </div>
-        <div className="bg-Rose50 p-6 rounded-lg ">
+        <div className="bg-Rose50 p-6 md:p-8 rounded-lg md:mt-10  md:mx-20">
           <div className="flex flex-col">
             {/* Header for the cart section */}
             <h2 className="text-3xl font-bold text-Red">
@@ -140,11 +153,11 @@ const App: React.FC = () => {
                     removeItemFromCart={removeItemFromCart}
                   />
                 ))}
-                <p className='flex items-center pt-5 tex-base text-Rose900'>Order Total 
-                  {/* Calculate and display the total order amount */}
+                <p className='flex items-center pt-5 tex-base md:text-lg text-Rose900'>Order Total 
+                  {/*display the total order amount */}
                   <span className='ml-auto text-2xl font-bold'>${totalPrice}</span>
                 </p>
-                <div className='flex items-center gap-2 w-full px-4 mt-6 bg-Rose100 py-3 rounded-md'>
+                <div className='flex items-center gap-2 w-full px-4 mt-6 bg-Rose100 py-3 rounded-md md:justify-center'>
                   {/* Display carbon-neutral delivery information */}
                   <img src={carbonIcon} alt="carbon-icon" className='size-6' />
                   <p>This is <span className='font-bold'>carbon-neutral</span> delivery</p>
@@ -152,7 +165,8 @@ const App: React.FC = () => {
                 <button 
                   onClick={confirmOrder}
                   type='submit'
-                  className='w-full bg-Red mt-6 py-3 rounded-full font-semibold text-Rose100'
+                  className='w-full bg-Red mt-6 py-3 rounded-full font-semibold
+                   text-Rose100 text-base md:text-lg'
                 >Confirm Order</button>
               </div>
             )}
