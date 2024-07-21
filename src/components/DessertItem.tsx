@@ -26,12 +26,12 @@ const DessertItemComponent: React.FC<Props> = ({
     <div>
       <div className="flex flex-col items-center ">
         {/* Dessert Image */}
-        <div className={`${showIncrement[item.id] && 'border-[3px] border-Red'} rounded-[10px] w-full overflow-hidden transition-colors duration-300 sm:h-[250px]`}>
+        <div className={`${showIncrement[item.id] && 'border-[3px] border-Red'} rounded-[10px] w-full overflow-hidden transition-colors duration-300 sm:h-[220px]`}>
           {/* Image of the dessert with responsive sources */}
           <img
             src={item.image.mobile}
             srcSet={`${item.image.mobile} 480w, ${item.image.tablet} 768w, ${item.image.desktop} 1200w`}
-            sizes="max-width: 678px) 100vw, (max-width: 769px) and (max-width: 1200px) 100vw, 1200px"
+            sizes="max-width: 480px) 100vw, (max-width: 769px) and (max-width: 1200px) 100vw, 1200px"
             alt={`${item.name}-image`}
             className="w-full h-full object-cover overflow-hidden hover:transform-cpu"
           />
