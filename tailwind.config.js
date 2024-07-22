@@ -25,8 +25,8 @@ export default {
         Rose900: 'hsl(14, 65%, 9%)'
       },
       animation: {
-        upAnim: "upAnim .3s ease 0s 1 normal forwards",
-        slideUp: "slideUp .5s ease 0s 1 normal forwards"
+        upAnim: "upAnim .4s ease 0s 1 normal forwards",
+        slideUp: "slideUp .4s ease 0s 1 normal forwards"
       },
       keyframes: {
         upAnim: {

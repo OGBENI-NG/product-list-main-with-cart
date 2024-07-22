@@ -26,7 +26,9 @@ const DessertItemComponent: React.FC<Props> = ({
     <div>
       <div className="flex flex-col items-center ">
         {/* Dessert Image */}
-        <div className={`${showIncrement[item.id] && 'border-[3px] border-Red'} rounded-[10px] w-full overflow-hidden transition-colors duration-300 sm:h-[220px]`}>
+        <div className={`border-[3px] ${showIncrement[item.id] ? 'border-Red ' : 'border-Rose100'} 
+          rounded-[10px] w-full overflow-hidden transition-colors
+           duration-400 sm:h-[220px]`}>
           {/* Image of the dessert with responsive sources */}
           <img
             src={item.image.mobile}
@@ -38,24 +40,26 @@ const DessertItemComponent: React.FC<Props> = ({
         </div>
 
         {/* Increment/Decrement Buttons */}
-        <div className="-mt-6">
+        <div className="-mt-6 lg:-mt-4">
           {showIncrement[item.id] ? (
-            <div className={`${showIncrement[item.id] && 'animate-upAnim'} bg-Red flex items-center gap-10 w-full py-3 px-[17px] rounded-full text-base font-semibold overflow-hidden lg:cursor-pointer`}>
+            <div className={`${showIncrement[item.id] && 'animate-upAnim'} bg-Red flex items-center gap-10 w-full py-[10px] px-4 rounded-full 
+            lg:gap-[33px] lg:px-[8px] lg:py-[5px]
+            font-semibold overflow-hidden lg:cursor-pointer `}>
               {/* Decrement button */}
               <div
                 onClick={() => removeFromCart(item)}
-                className="group lg:hover:bg-Rose50 border-2 p-[2px] rounded-full">
-                <FaMinus className="text-base text-Rose50 lg:group-hover:text-Red" />
+                className="group lg:hover:bg-Rose50 border-[1.5px] p-[2px] rounded-full">
+                <FaMinus className="text-[14px] lg:text-[10px] text-Rose50 lg:group-hover:text-Red" />
               </div>
               {/* Display item quantity in the cart */}
-              <span className="text-Rose50">
+              <span className="text-Rose50 text-base">
                 {cart.find(cartItem => cartItem.id === item.id)?.quantity || 1}
               </span>
               {/* Increment button */}
               <div
                 onClick={() => updateItemQuantity(item)}
-                className="group lg:hover:bg-Rose50 border-2 p-[2px] rounded-full">
-                <FaPlus className="text-base text-Rose50 lg:group-hover:text-Red" />
+                className="group lg:hover:bg-Rose50 border-[1.5px] p-[2px] rounded-full">
+                <FaPlus className="text-[14px] lg:text-[10px] text-Rose50 lg:group-hover:text-Red" />
               </div>
             </div>
           ) : (
@@ -63,9 +67,12 @@ const DessertItemComponent: React.FC<Props> = ({
             <button
               onClick={() => addToCart(item)}
               type="button"
-              className={`text-base font-semibold flex items-center bg-Rose50 rounded-full gap-2 border-2 border-Rose300 py-[10px] px-6 ${!showIncrement[item.id] && 'animate-upAnim'}`}
+              className={`text-base lg:text-[12px] font-semibold flex items-center bg-Rose50 
+                rounded-full gap-2 border-2 border-Rose300 py-[8px] px-6 
+                lg:py-[3px] lg:px-4
+                ${!showIncrement[item.id] && 'animate-upAnim'}`}
             >
-              <img className="size-5" src={addToCartIcon} alt="add-to-cart" />
+              <img className="size-5 lg:size-4" src={addToCartIcon} alt="add-to-cart" />
               Add to Cart
             </button>
           )}
