@@ -40,10 +40,10 @@ const DessertItemComponent: React.FC<Props> = ({
         </div>
 
         {/* Increment/Decrement Buttons */}
-        <div className="-mt-6 lg:-mt-4">
+        <div className="-mt-6 lg:-mt-[18px]">
           {showIncrement[item.id] ? (
-            <div className={`${showIncrement[item.id] && 'animate-upAnim'} bg-Red flex items-center gap-10 w-full py-[10px] px-4 rounded-full 
-            lg:gap-[33px] lg:px-[8px] lg:py-[5px]
+            <div className={`${showIncrement[item.id] && 'animate-upAnim'} bg-Red flex items-center gap-[42px] w-full py-[10px] px-[12px] rounded-full 
+            lg:gap-[28px] lg:px-[8px] lg:py-[8px]
             font-semibold overflow-hidden lg:cursor-pointer `}>
               {/* Decrement button */}
               <div
@@ -52,7 +52,7 @@ const DessertItemComponent: React.FC<Props> = ({
                 <FaMinus className="text-[14px] lg:text-[10px] text-Rose50 lg:group-hover:text-Red" />
               </div>
               {/* Display item quantity in the cart */}
-              <span className="text-Rose50 text-base">
+              <span className="text-Rose50 text-base lg:text-[14px] size-4 leading-none text-center">
                 {cart.find(cartItem => cartItem.id === item.id)?.quantity || 1}
               </span>
               {/* Increment button */}
@@ -68,8 +68,8 @@ const DessertItemComponent: React.FC<Props> = ({
               onClick={() => addToCart(item)}
               type="button"
               className={`text-base lg:text-[12px] font-semibold flex items-center bg-Rose50 
-                rounded-full gap-2 border-2 border-Rose300 py-[8px] px-6 
-                lg:py-[3px] lg:px-4
+                rounded-full gap-2 border-2 lg:border-[1.5px] border-Rose300 py-[8px] px-6 
+                lg:py-[3px] lg:px-4 lg:hover:text-Red lg:hover:border-Red
                 ${!showIncrement[item.id] && 'animate-upAnim'}`}
             >
               <img className="size-5 lg:size-4" src={addToCartIcon} alt="add-to-cart" />
@@ -79,7 +79,7 @@ const DessertItemComponent: React.FC<Props> = ({
         </div>
       </div>
       {/* Item details */}
-      <div className="flex flex-col gap-1 pt-3 pb-10 text-base">
+      <div className="flex flex-col gap-1 pt-3 pb-10 text-base lg:text-[14px] lg:pb-2">
         <p className="text-Rose500">{item.category}</p> {/* Category of the dessert */}
         <p className="text-Rose900 font-semibold">{item.name}</p> {/* Name of the dessert */}
         <p className="text-Red font-bold">${item.price.toFixed(2)}</p> {/* Price of the dessert */}

@@ -11,7 +11,8 @@ export default {
       },
       screens: {
         ssm: {'min': '360px', 'max': '377px'},
-        sm: {'min': '390px', 'max': '640px'}
+        sm: {'min': '390px', 'max': '640px'},
+        xl: {'min': '1200px', 'max': '1440px'}
         
       },
       colors: {

@@ -12,12 +12,14 @@ interface Props {
 const CartItemComponent: React.FC<Props> = ({ item, removeItemFromCart }) => {
   return (
     // Main container for the cart item with border and padding
-    <div className="border-b-2 border-Rose100 py-4 flex items-center">
-      <div className='text-base md:text-lg'>
+    <div className="border-b-2 border-Rose100 py-[10px] flex items-center">
+      <div className='text-base md:text-lg lg:text-[13px] flex flex-col gap-y-2 
+        lg:gap-y-[5px]'>
         {/* Display the dessert name in bold */}
-        <p className="text-Rose900 font-semibold">{item.name}</p>
+        <p className="text-Rose900 font-semibold w-[150px] overflow-hidden 
+          text-ellipsis whitespace-nowrap leading-none">{item.name}</p>
         {/* Container for item quantity, individual price, and total price */}
-        <div className="flex items-center gap-[14px] pt-1">
+        <div className="flex items-center gap-[14px] lg:leading-snug">
           {/* Display the quantity of the item */}
           <p className="text-Red font-bold">x{item.quantity || 1}</p>
           {/* Display the price per unit of the item */}
@@ -35,7 +37,7 @@ const CartItemComponent: React.FC<Props> = ({ item, removeItemFromCart }) => {
           aria-label='close'
           onClick={() => removeItemFromCart(item)} // Call removeItemFromCart function with the item as argument
           type='button'
-          className='text-lg lg:group-hover:text-Rose900 text-Rose300 
+          className='text-lg lg:text-[14px] lg:group-hover:text-Rose900 text-Rose300 
           leading-none font-bold m-auto'>
           <FaPlus className='rotate-45'/>
         </button>
