@@ -11,6 +11,7 @@ interface Props {
   addToCart: (item: DessertItem) => void; // Function to add item to the cart
   updateItemQuantity: (item: DessertItem) => void; // Function to increase the item quantity in the cart
   removeFromCart: (item: DessertItem) => void; // Function to decrease the item quantity in the cart
+  className: string 
 }
 
 // Define the DessertItemComponent as a functional component
@@ -20,13 +21,16 @@ const DessertItemComponent: React.FC<Props> = ({
   cart,
   addToCart,
   updateItemQuantity,
-  removeFromCart
+  removeFromCart,
+  className
 }) => {
   return (
     <div>
       <div className="flex flex-col items-center ">
         {/* Dessert Image */}
-        <div className={`border-[3px] ${showIncrement[item.id] ? 'border-Red ' : 'border-Rose100'} 
+        <div className={`border-[3px] lg:border-[2px] 
+          ${showIncrement[item.id] ? 'border-Red ' : 'border-Rose100'} 
+          ${className}
           rounded-[10px] w-full overflow-hidden transition-colors
            duration-400 sm:h-[220px]`}>
           {/* Image of the dessert with responsive sources */}
@@ -67,7 +71,7 @@ const DessertItemComponent: React.FC<Props> = ({
             <button
               onClick={() => addToCart(item)}
               type="button"
-              className={`text-base lg:text-[12px] font-semibold flex items-center bg-Rose50 
+              className={`${className} text-base lg:text-[12px] font-semibold flex items-center bg-Rose50 
                 rounded-full gap-2 border-2 lg:border-[1.5px] border-Rose300 py-[8px] px-6 
                 lg:py-[3px] lg:px-4 lg:hover:text-Red lg:hover:border-Red
                 ${!showIncrement[item.id] && 'animate-upAnim'}`}
