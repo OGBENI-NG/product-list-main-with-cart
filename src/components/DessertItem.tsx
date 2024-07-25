@@ -11,8 +11,9 @@ interface Props {
   addToCart: (item: DessertItem) => void; // Function to add item to the cart
   updateItemQuantity: (item: DessertItem) => void; // Function to increase the item quantity in the cart
   removeFromCart: (item: DessertItem) => void; // Function to decrease the item quantity in the cart
-  className: string 
+  className: string
 }
+
 
 // Define the DessertItemComponent as a functional component
 const DessertItemComponent: React.FC<Props> = ({
@@ -32,7 +33,7 @@ const DessertItemComponent: React.FC<Props> = ({
           ${showIncrement[item.id] ? 'border-Red ' : 'border-Rose100'} 
           ${className}
           rounded-[10px] w-full overflow-hidden transition-colors
-           duration-400 sm:h-[220px]`}>
+           duration-300 sm:h-[220px]`}>
           {/* Image of the dessert with responsive sources */}
           <img
             src={item.image.mobile}
@@ -46,7 +47,8 @@ const DessertItemComponent: React.FC<Props> = ({
         {/* Increment/Decrement Buttons */}
         <div className="-mt-6 lg:-mt-[18px]">
           {showIncrement[item.id] ? (
-            <div className={`${showIncrement[item.id] && 'animate-upAnim'} bg-Red flex items-center gap-[42px] w-full py-[10px] px-[12px] rounded-full 
+            <div className={`${showIncrement[item.id] && 'animate-upAnim'}
+             bg-Red transition-colors duration-300 flex items-center gap-[42px] w-full py-[10px] px-[12px] rounded-full 
             lg:gap-[28px] lg:px-[8px] lg:py-[8px]
             font-semibold overflow-hidden lg:cursor-pointer `}>
               {/* Decrement button */}

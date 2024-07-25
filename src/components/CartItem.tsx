@@ -6,15 +6,29 @@ import { FaPlus } from 'react-icons/fa6';
 interface Props {
   item: DessertItem;
   removeItemFromCart: (item: DessertItem) => void;
+  isRemoving: boolean
+  isAdding: boolean
 }
 
+const removeFromCartAnim = "-translate-x-full opacity-0 transition-all duration-300 ease-out";
+const addToCartAnim = "-translate-x-full opacity-100 transition-all duration-300 ease-out";
+
 // Define the functional component CartItemComponent which takes Props as an argument
-const CartItemComponent: React.FC<Props> = ({ item, removeItemFromCart }) => {
+const CartItemComponent: React.FC<Props> = ({ 
+  item, 
+  removeItemFromCart, 
+  isRemoving,
+  isAdding
+
+  }) => {
   return (
     // Main container for the cart item with border and padding
-    <div className="border-b-2 border-Rose100 py-[10px] flex items-center">
-      <div className='text-base md:text-lg lg:text-[13px] flex flex-col gap-y-2 
-        lg:gap-y-[5px]'>
+    <div className={`border-b-2 border-Rose100 py-[10px] flex items-center
+      ${isAdding && 'animate-upAnim'}
+     ${isRemoving && removeFromCartAnim}
+      overflow-x-hidden`}>
+      <div className={`text-base md:text-lg lg:text-[13px] flex flex-col gap-y-2 
+        lg:gap-y-[5px] `}>
         {/* Display the dessert name in bold */}
         <p className="text-Rose900 font-semibold w-[150px] overflow-hidden 
           text-ellipsis whitespace-nowrap leading-none">{item.name}</p>

@@ -26,6 +26,10 @@ const App: React.FC = () => {
   const [itemsPerRow, setItemsPerRow] = useState<number>(3); // Default to 3 items per row
   // Ref to store timeout for resetting focus
   const focusTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  //state to add animation to remove item from cart
+  const [isRemoving, setIsRemoving] = useState<{[key: string]: boolean}>({});
+  //state to add animation to adding item to cart
+  const [isAdding, setIsAdding] = useState<{[key: string]: boolean }>({});
 
   // Calculate total price of items in the cart
   const totalPrice = cart.reduce((acc, item) => acc + (item.quantity || 1) * item.price, 0).toFixed(2);
@@ -115,8 +119,13 @@ const App: React.FC = () => {
     if (existingItem) {
       updateItemQuantity(item);
     } else {
+      setIsAdding(prev => ({ ...prev, [item.id]: true }));
       setCart([{ ...item, quantity: 1 }, ...cart]);
       setShowIncrement({ ...showIncrement, [item.id]: true });
+      setTimeout(() => {
+        setIsAdding(prev => ({ ...prev, [item.id]: false}));
+        
+      }, 300);
     }
   }
 
@@ -132,7 +141,7 @@ const App: React.FC = () => {
   }
 
   // Function to remove or decrement item quantity in the cart
-  function removeItemFromUpdateCart(item: DessertItem) {
+  function removeItemQuantity(item: DessertItem) {
     const existingItem = cart.find(cartItem => cartItem.id === item.id);
     if (existingItem) {
       const newQuantity = (existingItem.quantity || 1) - 1;
@@ -145,16 +154,24 @@ const App: React.FC = () => {
           )
         );
       } else {
-        setCart(cart.filter(cartItem => cartItem.id !== item.id));
+        setIsRemoving((prev) => ({ ...prev, [item.id]: true }));
         setShowIncrement({ ...showIncrement, [item.id]: false });
+        setTimeout(() => {
+          setCart(cart.filter(cartItem => cartItem.id !== item.id));
+          setIsRemoving((prev) => ({ ...prev, [item.id]: false }));
+        }, 300);
       }
     }
   }
 
   // Function to remove item from the cart
   function removeItemFromCart(item: DessertItem) {
-    setCart(cart.filter(cartItem => cartItem.id !== item.id));
+    setIsRemoving((prev) => ({ ...prev, [item.id]: true }));
     setShowIncrement({ ...showIncrement, [item.id]: false });
+    setTimeout(() => {
+      setCart(cart.filter(cartItem => cartItem.id !== item.id));
+      setIsRemoving((prev) => ({ ...prev, [item.id]: false }));
+    }, 300);
   }
 
   return (
@@ -182,7 +199,7 @@ const App: React.FC = () => {
                   cart={cart}
                   addToCart={addToCart}
                   updateItemQuantity={updateItemQuantity}
-                  removeFromCart={removeItemFromUpdateCart}
+                  removeFromCart={removeItemQuantity}
                   className={index === focusedItemIndex ? 'border-red-700 text-Red' : ''}
                 />
               </div>
@@ -190,7 +207,8 @@ const App: React.FC = () => {
           </div>
 
           {/*  Cart container */}
-          <div className="bg-Rose50 p-6 md:p-8 rounded-lg md:mt-10 md:mx-20 lg:m-0 lg:-mt-10 lg:h-max lg:p-4 lg:w-[650px]">
+          <div className="bg-Rose50 overflow-hidden p-6 md:p-8 rounded-lg md:mt-10 
+            md:mx-20 lg:m-0 lg:-mt-10 lg:h-max lg:p-4 lg:w-[650px]">
             <div className="flex flex-col">
               {/* Cart header with item count */}
               <h2 className="text-3xl lg:text-xl font-bold text-Red">
@@ -212,6 +230,9 @@ const App: React.FC = () => {
                       key={index}
                       item={item}
                       removeItemFromCart={removeItemFromCart}
+                      isRemoving={isRemoving[item.id] || false}
+                      isAdding={isAdding[item.id] || false}
+                      
                     />
                   ))}
                   <p className='flex items-center pt-4 lg:pt-3 text-base md:text-lg text-Rose900 lg:text-[14px]'>
