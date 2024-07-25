@@ -176,7 +176,7 @@ const App: React.FC = () => {
 
   return (
     // Main container with padding and background color
-    <main className={`py-16 px-4 md:px-7 lg:p-20 bg-Rose100 w-full h-full font-RedHat
+    <main className={`py-16 px-4 md:px-7 lg:p-20 bg-Rose100 w-full h-screen font-RedHat
       overflow-x-hidden select-none xl:p-[80px]`}
     >
       <>
@@ -248,7 +248,7 @@ const App: React.FC = () => {
                     onClick={confirmOrder}
                     type='submit'
                     className='w-full bg-Red mt-6 py-3 rounded-full font-semibold text-Rose100 
-                    text-base md:text-lg lg:text-base lg:py-2'
+                    text-base md:text-lg lg:text-base lg:py-2 z-auto'
                   >
                     Confirm Order
                   </button>
