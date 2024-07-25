@@ -176,7 +176,7 @@ const App: React.FC = () => {
 
   return (
     // Main container with padding and background color
-    <main className={`py-16 px-4 md:px-7 lg:p-20 bg-Rose100 w-full h-screen font-RedHat
+    <main className={`py-16 px-4 md:px-7 lg:p-20 bg-Rose100 w-full h-full font-RedHat
       overflow-x-hidden select-none xl:p-[80px]`}
     >
       <>
@@ -216,7 +216,7 @@ const App: React.FC = () => {
                 <span>({cart.length === 0 ? 0 : totalCartItem})</span>
               </h2>
               {cart.length === 0 ? (
-                <div className="py-8 lg:py-5">
+                <div className={`py-8 lg:py-5 `}>
                   <img src={emptyCart} alt="empty-cart-illustration" className="size-40 lg:size-32 m-auto" />
                   <p className="text-center font-medium text-Rose500 text-base lg:text-[12px] lg:pt-2">
                     Your added items will appear here
