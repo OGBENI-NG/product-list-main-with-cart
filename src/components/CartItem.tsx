@@ -11,7 +11,6 @@ interface Props {
 }
 
 const removeFromCartAnim = "-translate-x-full opacity-0 transition-all duration-300 ease-out";
-const addToCartAnim = "-translate-x-full opacity-100 transition-all duration-300 ease-out";
 
 // Define the functional component CartItemComponent which takes Props as an argument
 const CartItemComponent: React.FC<Props> = ({ 
