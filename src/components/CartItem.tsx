@@ -23,7 +23,7 @@ const CartItemComponent: React.FC<Props> = ({
   return (
     // Main container for the cart item with border and padding
     <div className={`border-b-2 border-Rose100 py-[10px] flex items-center
-      ${isAdding && 'animate-upAnim'}
+      ${isAdding && 'animate-cartAnim'}
      ${isRemoving && removeFromCartAnim}
       overflow-x-hidden`}>
       <div className={`text-base md:text-lg lg:text-[13px] flex flex-col gap-y-2 

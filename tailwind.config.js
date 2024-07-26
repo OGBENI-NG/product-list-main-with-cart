@@ -27,13 +27,26 @@ export default {
       },
       animation: {
         upAnim: "upAnim .4s ease 0s 1 normal forwards",
-        slideUp: "slideUp .4s ease 0s 1 normal forwards"
+        slideUp: "slideUp .4s ease 0s 1 normal forwards",
+        cartAnim: "cartAnim .4s ease 0s 1 normal forwards"
       },
       keyframes: {
         upAnim: {
           '0%': {
             opacity: 0,
-            transform: "scale(0.9)"
+            transform: "scale(0.89)"
+            
+          },
+          '100%': {
+            opacity: 1,
+            transform: "scale(1)"
+            
+          }
+        },
+        cartAnim: {
+          '0%': {
+            opacity: 0,
+            transform: "scale(0.4)"
             
           },
           '100%': {
