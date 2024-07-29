@@ -269,7 +269,7 @@ const App: React.FC = () => {
               </div>
             ) : (
                
-              <div className={`${toggleConfirmOrder && 'animate-slideUp'} bg-Rose50 rounded-t-xl 
+              <div className={`${toggleConfirmOrder && 'animate-confirmOrderAnim'} bg-Rose50 rounded-t-xl 
                 absolute bottom-28 right-0 left-0 top-[100px] h-full px-5  lg:p-[20px] 
                   md:h-max md:inset-x-20 md:inset-y-[150px]
                  md:rounded-xl md:p-8 lg:h-[444px] lg:w-[400px] lg:inset-[0] lg:m-auto`}

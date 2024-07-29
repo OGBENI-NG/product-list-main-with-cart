@@ -27,28 +27,28 @@ const DessertItemComponent: React.FC<Props> = ({
 }) => {
   return (
     <div>
-      <div className="flex flex-col items-center ">
+      <div className="flex flex-col items-center overflow-hidden">
         {/* Dessert Image */}
         <div className={`border-[3px] lg:border-[2px] 
           ${showIncrement[item.id] ? 'border-Red ' : 'border-Rose100'} 
           ${className}
           rounded-[10px] w-full overflow-hidden transition-colors
-           duration-300 sm:h-[220px]`}>
+           duration-400 sm:h-[220px]`}>
           {/* Image of the dessert with responsive sources */}
           <img
             src={item.image.mobile}
             srcSet={`${item.image.mobile} 480w, ${item.image.tablet} 768w, ${item.image.desktop} 1200w`}
             sizes="max-width: 480px) 100vw, (max-width: 769px) and (max-width: 1200px) 100vw, 1200px"
             alt={`${item.name}-image`}
-            className="w-full h-full object-cover overflow-hidden hover:transform-cpu"
+            className="w-full h-full object-cover overflow-hidden"
           />
         </div>
 
         {/* Increment/Decrement Buttons */}
         <div className="-mt-6 lg:-mt-[18px]">
           {showIncrement[item.id] ? (
-            <div className={`${showIncrement[item.id] && 'animate-upAnim'}
-             bg-Red transition-colors duration-300 flex items-center gap-[42px] w-full py-[10px] px-[12px] rounded-full 
+            <div className={`${showIncrement[item.id] && 'animate-addToCartBtnAnim'}
+             bg-Red transition-colors duration-[.4s] flex items-center gap-[42px] w-full py-[10px] px-[12px] rounded-full 
             lg:gap-[28px] lg:px-[8px] lg:py-[8px]
             font-semibold overflow-hidden lg:cursor-pointer `}>
               {/* Decrement button */}
@@ -76,7 +76,7 @@ const DessertItemComponent: React.FC<Props> = ({
               className={`${className} text-base lg:text-[12px] font-semibold flex items-center bg-Rose50 
                 rounded-full gap-2 border-2 lg:border-[1.5px] border-Rose300 py-[8px] px-6 
                 lg:py-[3px] lg:px-4 lg:hover:text-Red lg:hover:border-Red
-                ${!showIncrement[item.id] && 'animate-upAnim'}`}
+                ${!showIncrement[item.id] && 'animate-addToCartBtnAnim'}`}
             >
               <img className="size-5 lg:size-4" src={addToCartIcon} alt="add-to-cart" />
               Add to Cart

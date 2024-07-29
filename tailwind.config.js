@@ -26,12 +26,12 @@ export default {
         Rose900: 'hsl(14, 65%, 9%)'
       },
       animation: {
-        upAnim: "upAnim .4s ease 0s 1 normal forwards",
-        slideUp: "slideUp .4s ease 0s 1 normal forwards",
+        addToCartBtnAnim: "addToCartAnim .4s ease 0s 1 normal forwards",
+        confirmOrderAnim: "confirmOrderAnim .4s ease 0s 1 normal forwards",
         cartAnim: "cartAnim .4s ease 0s 1 normal forwards"
       },
       keyframes: {
-        upAnim: {
+        addToCartAnim: {
           '0%': {
             opacity: 0,
             transform: "scale(0.89)"
@@ -55,7 +55,7 @@ export default {
             
           }
         },
-        slideUp: {
+        confirmOrderAnim: {
           '0%': {
             opacity: 0,
             transform: 'translateY(250px)'
